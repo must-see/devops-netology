@@ -34,3 +34,5 @@ override.tf.json - игнорирование файлов override.tf.json
 terraform.rc - игнорирование файлов terraform.rc
 
 fix
+
+IDE1
