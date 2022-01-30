@@ -32,3 +32,5 @@ override.tf.json - игнорирование файлов override.tf.json
 
 .terraformrc - игнорирование файлов с расширением
 terraform.rc - игнорирование файлов terraform.rc
+
+111
