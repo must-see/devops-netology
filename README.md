@@ -36,3 +36,4 @@ terraform.rc - игнорирование файлов terraform.rc
 fix
 
 IDE1
+IDE2
