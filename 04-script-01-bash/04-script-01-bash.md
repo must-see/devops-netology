@@ -88,3 +88,8 @@ cat curl.log
 1 192.168.88.1 Sun 13 Mar 2022 04:27:53 PM UTC
 1 87.250.250.242 Sun 13 Mar 2022 04:27:53 PM UTC
 ```
+
+```bash
+cat error.log
+0 8.8.8.8 Sun 13 Mar 2022 04:27:54 PM UTC
+```
