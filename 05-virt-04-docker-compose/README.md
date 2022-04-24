@@ -27,8 +27,18 @@
 Для получения зачета, вам необходимо предоставить:
 - Скриншот страницы свойств созданной ВМ, как на примере ниже:
 
+```commandline
+Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+external_ip_address_node01_yandex_cloud = "51.250.15.146"
+internal_ip_address_node01_yandex_cloud = "192.168.101.25"
+
+```
+
 <p align="center">
-  <img width="1200" height="600" src="./assets/yc_01.png">
+  <img src="./assets/VM.JPG">
 </p>
 
 ## Задача 3
@@ -38,7 +48,15 @@
 Для получения зачета, вам необходимо предоставить:
 - Скриншот работающего веб-интерфейса Grafana с текущими метриками, как на примере ниже
 <p align="center">
-  <img src="./assets/image.JPG">
+  <img src="./assets/MonitorServices.JPG">
+</p>
+
+<p align="center">
+  <img src="./assets/DockerHost.JPG">
+</p>
+
+<p align="center">
+  <img src="./assets/Targets.JPG">
 </p>
 
 ## Задача 4 (*)
