@@ -220,6 +220,14 @@ sudo docker images
 REPOSITORY               TAG       IMAGE ID       CREATED          SIZE
 mustsee/alpine-ansible   2.10.0    07aaf71b892f   29 seconds ago   371MB
 
+
+sudo docker push mustsee/alpine-ansible:2.10.0
+The push refers to repository [docker.io/mustsee/alpine-ansible]
+4b92cd2d64a6: Layer already exists 
+fc7c526b4ceb: Pushed 
+b541d28bf3b4: Layer already exists 
+2.10.0: digest: sha256:cf7a8026feae345e4dde8d93108b5f7a9516df1cd741dbdce1d57d3a13b00394 size: 947
+
 ```
 
 https://hub.docker.com/repository/docker/mustsee/alpine-ansible
