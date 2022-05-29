@@ -137,7 +137,7 @@ Foreign-key constraints:
     "fk_заказ" FOREIGN KEY ("заказ") REFERENCES orders(id)
 Access method: heap
 
-sg_db=# \d+ orders
+test_db=# \d+ orders
                                                         Table "public.orders"
     Column    |       Type        | Collation | Nullable |              Default               | Storage  | Stats target | Description 
 --------------+-------------------+-----------+----------+------------------------------------+----------+--------------+-------------
@@ -230,7 +230,7 @@ test_db=# SELECT count(1) FROM orders;
 
 test_db=# INSERT INTO clients VALUES (1, 'Иванов Иван Иванович', 'USA'), (2, 'Петров Петр Петрович', 'Canada'), (3, 'Иоганн Себастьян Бах', 'Japan'), (4, 'Ронни Джеймс Дио', 'Russia'), (5, 'Ritchie Blackmore', 'Russia');
 INSERT 0 5
-psg_db=# SELECT count(1) FROM clients;
+test_db=# SELECT count(1) FROM clients;
  count 
 -------
      5
