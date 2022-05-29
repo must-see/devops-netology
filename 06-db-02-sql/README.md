@@ -77,6 +77,8 @@ Type "help" for help.
 ```commandline
 CREATE USER "test-admin-user" WITH PASSWORD 'P@ssw0rd';
 
+CREATE DATABASE test_db;
+
 CREATE TABLE orders (
     id SERIAL,
     наименование VARCHAR, 
@@ -105,7 +107,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON orders, clients TO "test-simple-user";
 ```
 итоговый список БД после выполнения пунктов выше
 ```commandline
-psg_db=# \l+
+test_db=# \l+
                                                                         List of databases
    Name    |   Owner    | Encoding |  Collate   |   Ctype    |       Access privileges       |  Size   | Tablespace |                Description                 
 -----------+------------+----------+------------+------------+-------------------------------+---------+------------+--------------------------------------------
@@ -120,7 +122,7 @@ psg_db=# \l+
 ```
 описание таблиц (describe)
 ```commandline
-psg_db=# \d+ clients
+test_db=# \d+ clients
                                                            Table "public.clients"
       Column       |       Type        | Collation | Nullable |               Default               | Storage  | Stats target | Description 
 -------------------+-------------------+-----------+----------+-------------------------------------+----------+--------------+-------------
@@ -150,7 +152,7 @@ Access method: heap
 ```
 SQL-запрос для выдачи списка пользователей с правами над таблицами test_db
 ```commandline
-psg_db=# SELECT 
+test_db=# SELECT 
     grantee, table_name, privilege_type 
 FROM 
     information_schema.table_privileges 
@@ -220,13 +222,13 @@ order by
 INSERT INTO orders VALUES (1, 'Шоколад', 10), (2, 'Принтер', 3000), (3, 'Книга', 500), (4, 'Монитор', 7000), (5, 'Гитара', 4000);
 INSERT 0 5
 
-psg_db=# SELECT count(1) FROM orders;
+test_db=# SELECT count(1) FROM orders;
  count 
 -------
      5
 (1 row)
 
-psg_db=# INSERT INTO clients VALUES (1, 'Иванов Иван Иванович', 'USA'), (2, 'Петров Петр Петрович', 'Canada'), (3, 'Иоганн Себастьян Бах', 'Japan'), (4, 'Ронни Джеймс Дио', 'Russia'), (5, 'Ritchie Blackmore', 'Russia');
+test_db=# INSERT INTO clients VALUES (1, 'Иванов Иван Иванович', 'USA'), (2, 'Петров Петр Петрович', 'Canada'), (3, 'Иоганн Себастьян Бах', 'Japan'), (4, 'Ронни Джеймс Дио', 'Russia'), (5, 'Ritchie Blackmore', 'Russia');
 INSERT 0 5
 psg_db=# SELECT count(1) FROM clients;
  count 
@@ -255,16 +257,16 @@ psg_db=# SELECT count(1) FROM clients;
 Подсказка - используйте директиву `UPDATE`.
 
 ```commandline
-sg_db=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Книга') WHERE "фамилия"='Иванов Иван Иванович';
+test_db=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Книга') WHERE "фамилия"='Иванов Иван Иванович';
 UPDATE 1
 
-psg_db=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Монитор') WHERE "фамилия"='Петров Петр Петрович';
+test_db=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Монитор') WHERE "фамилия"='Петров Петр Петрович';
 UPDATE 1
 
-psg_db=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Гитара') WHERE "фамилия"='Иоганн Себастьян Бах';
+test_db=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Гитара') WHERE "фамилия"='Иоганн Себастьян Бах';
 UPDATE 1
 
-psg_db=# SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
+test_db=# SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
  id |       фамилия        | страна проживания | заказ 
 ----+----------------------+-------------------+-------
   1 | Иванов Иван Иванович | USA               |     3
@@ -280,7 +282,7 @@ psg_db=# SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
 
 Приведите получившийся результат и объясните что значат полученные значения.
 ```commandline
-psg_db=# EXPLAIN SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
+test_db=# EXPLAIN SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
                                QUERY PLAN                               
 ------------------------------------------------------------------------
  Hash Join  (cost=37.00..57.24 rows=810 width=72)
