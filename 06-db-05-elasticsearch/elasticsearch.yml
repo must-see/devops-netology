@@ -1,0 +1,8 @@
+path:
+    data: /var/lib/elasticsearch
+    logs: /var/log/elasticsearch
+    repo: /var/lib/elasticsearch/snapshots
+
+cluster.name: "prod"
+node.name: "netology_test"
+network.host: 0.0.0.0
