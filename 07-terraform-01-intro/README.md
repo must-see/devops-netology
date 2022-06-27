@@ -104,7 +104,24 @@ anton@ubuntu:~$ tfenv list-remote
 1.2.1
 1.2.0
 ...
-
+anton@ubuntu:~$ tfenv install 1.0.8
+Installing Terraform v1.0.8
+Downloading release tarball from https://releases.hashicorp.com/terraform/1.0.8/terraform_1.0.8_linux_amd64.zip
+#################################################################################################################################################################################################### 100.0%
+Downloading SHA hash file from https://releases.hashicorp.com/terraform/1.0.8/terraform_1.0.8_SHA256SUMS
+No keybase install found, skipping OpenPGP signature verification
+Archive:  /tmp/tfenv_download.CCw2J6/terraform_1.0.8_linux_amd64.zip
+  inflating: /home/anton/.tfenv/versions/1.0.8/terraform  
+Installation of terraform v1.0.8 successful. To make this your default version, run 'tfenv use 1.0.8'
+anton@ubuntu:~$ tfenv install latest
+Installing Terraform v1.2.3
+Downloading release tarball from https://releases.hashicorp.com/terraform/1.2.3/terraform_1.2.3_linux_amd64.zip
+#################################################################################################################################################################################################### 100.0%
+Downloading SHA hash file from https://releases.hashicorp.com/terraform/1.2.3/terraform_1.2.3_SHA256SUMS
+No keybase install found, skipping OpenPGP signature verification
+Archive:  /tmp/tfenv_download.aZgKwM/terraform_1.2.3_linux_amd64.zip
+  inflating: /home/anton/.tfenv/versions/1.2.3/terraform  
+Installation of terraform v1.2.3 successful. To make this your default version, run 'tfenv use 1.2.3'
 anton@ubuntu:~$ tfenv list
   1.2.3
   1.0.8
