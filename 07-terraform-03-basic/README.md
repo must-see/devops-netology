@@ -38,6 +38,10 @@ anton@ubuntu:~/Desktop/IaaC 7.3/terraform/demo$ terraform workspace list
 [terraform plan](./plan.txt)
 
 ![](./s3.JPG)
+
+###Доп. информация:
+[Загрузка состояний Terraform в Object Storage](https://cloud.yandex.ru/docs/tutorials/infrastructure-management/terraform-state-storage)
+
 ---
 
 ### Как cдавать задание
