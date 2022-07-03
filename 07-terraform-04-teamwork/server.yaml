@@ -1,0 +1,41 @@
+repos:
+- id: github.com/must-see/devops-netology
+  branch: main
+  apply_requirements: [approved, mergeable]
+  workflow: custom
+  allowed_overrides: [apply_requirements, workflow, delete_source_branch_on_merge]
+  allowed_workflows: [custom]
+  allow_custom_workflows: true
+  delete_source_branch_on_merge: true
+  pre_workflow_hooks:
+    - run: pre-workflow-hook-command arg1
+  post_workflow_hooks:
+    - run: post-workflow-hook-command arg1
+
+- id: github.com/must-see/devops-netology
+  apply_requirements: [mergeable]
+  branch: main
+  workflow: default
+
+workflows:
+  custom:
+    plan:
+      steps:
+      - run: custom-command arg1 arg2
+      - init
+      - plan:
+          extra_args: ["-lock", "false"]
+      - run: custom-command arg1 arg2
+    apply:
+      steps:
+      - run: echo hi
+      - apply
+  default:
+    plan:
+      steps:
+      - init
+      - run: custom plan command
+          extra_args: ["-lock", "false"]
+    apply:
+      steps:
+      - run: custom apply command
