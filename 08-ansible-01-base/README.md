@@ -388,6 +388,64 @@ ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    s
 
 ```
 5. Напишите скрипт на bash: автоматизируйте поднятие необходимых контейнеров, запуск ansible-playbook и остановку контейнеров.
+- [script](./playbook/up.sh)
+```commandline
+nton@ubuntu:~/Desktop/playbook0801$ sudo sh ./up.sh
+[+] Running 3/0
+ ⠿ Container fedora   Running                                                                                                                                                                         0.0s
+ ⠿ Container ubuntu   Running                                                                                                                                                                         0.0s
+ ⠿ Container centos7  Running                                                                                                                                                                         0.0s
+Vault password: 
+[WARNING]: Found both group and host with same name: fedora
+
+PLAY [Print os facts] *************************************************************************************************************************************************************************************
+
+TASK [Gathering Facts] ************************************************************************************************************************************************************************************
+ok: [localhost]
+ok: [fedora]
+ok: [ubuntu]
+ok: [centos7]
+
+TASK [Print OS] *******************************************************************************************************************************************************************************************
+ok: [centos7] => {
+    "msg": "CentOS"
+}
+ok: [ubuntu] => {
+    "msg": "Ubuntu"
+}
+ok: [fedora] => {
+    "msg": "Fedora"
+}
+ok: [localhost] => {
+    "msg": "Ubuntu"
+}
+
+TASK [Print fact] *****************************************************************************************************************************************************************************************
+ok: [centos7] => {
+    "msg": "el default fact"
+}
+ok: [ubuntu] => {
+    "msg": "deb default fact"
+}
+ok: [fedora] => {
+    "msg": "PaSSw0rd"
+}
+ok: [localhost] => {
+    "msg": "PaSSw0rd"
+}
+
+PLAY RECAP ************************************************************************************************************************************************************************************************
+centos7                    : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+fedora                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[+] Running 4/4
+ ⠿ Container fedora              Removed                                                                                                                                                             10.4s
+ ⠿ Container centos7             Removed                                                                                                                                                             10.3s
+ ⠿ Container ubuntu              Removed                                                                                                                                                             10.4s
+ ⠿ Network playbook0801_default  Removed    
+```
 6. Все изменения должны быть зафиксированы и отправлены в вашей личный репозиторий.
 
 ---
