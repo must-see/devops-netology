@@ -30,6 +30,9 @@
 10. Выложите playbook в репозиторий.
 11. В ответ приведите ссылки на оба репозитория с roles и одну ссылку на репозиторий с playbook.
 ----------
+
+[Playbook](https://github.com/must-see/devops-netology/tree/main/08-ansible-04-role/playbook)
+
 Репозитории с ролями:
 - [clickhouse-role](https://github.com/must-see/clickhouse-role)
 - [lighthouse-role](https://github.com/must-see/lighthouse-role)
