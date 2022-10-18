@@ -25,7 +25,7 @@
 |      [Yandex API Gateway](https://cloud.yandex.ru/docs/api-gateway/quickstart/)      |    +    |  +   |         +         |
 |              [Amazon API Gateway](https://aws.amazon.com/api-gateway/)               |    +    |  +   |         +         |
 |  [Azure API Management](https://azure.microsoft.com/en-us/products/api-management/)  |    +    |  +   |         +         |
-Если проект хостится у какого то облачного провайдера, то лучше выбирать API Gateway этого провайдера или любой из опенсорсных с которым есть опыт работы и он имеет необходимый функционал.
+Если проект хостится у облачного провайдера, то лучше выбирать API Gateway этого провайдера или любой из опенсорсных с которым есть опыт работы и он имеет необходимый функционал.
 
 [10 Top Open Source API Gateways](https://www.tecmint.com/open-source-api-gateways-and-management-tools/)
 
