@@ -15,16 +15,17 @@
 
 Обоснуйте свой выбор.
 
-|                                     Наименование                                     | Routing | Auth | HTTPS Termination |
-|:------------------------------------------------------------------------------------:|:-------:|:----:|:-----------------:|
-|                         [kong](https://github.com/Kong/kong)                         |    +    |  +   |         +         |
-|                    [krakend](https://github.com/luraproject/lura)                    |    +    |  +   |         +         |
-|                    [tyk](https://github.com/TykTechnologies/tyk)                     |    +    |  +   |         +         |
-|                 [wso2](https://github.com/wso2/product-microgateway)                 |    +    |  +   |         +         |
-|          [gravitee](https://github.com/gravitee-io/gravitee-api-management)          |    +    |  +   |         +         |
-|      [Yandex API Gateway](https://cloud.yandex.ru/docs/api-gateway/quickstart/)      |    +    |  +   |         +         |
-|              [Amazon API Gateway](https://aws.amazon.com/api-gateway/)               |    +    |  +   |         +         |
-|  [Azure API Management](https://azure.microsoft.com/en-us/products/api-management/)  |    +    |  +   |         +         |
+|                                    Наименование                                    | Routing | Auth | HTTPS Termination |
+|:----------------------------------------------------------------------------------:|:-------:|:----:|:-----------------:|
+|                        [kong](https://github.com/Kong/kong)                        |    +    |  +   |         +         |
+|                   [krakend](https://github.com/luraproject/lura)                   |    +    |  +   |         +         |
+|                   [tyk](https://github.com/TykTechnologies/tyk)                    |    +    |  +   |         +         |
+|                [wso2](https://github.com/wso2/product-microgateway)                |    +    |  +   |         +         |
+|         [gravitee](https://github.com/gravitee-io/gravitee-api-management)         |    +    |  +   |         +         |
+|     [Yandex API Gateway](https://cloud.yandex.ru/docs/api-gateway/quickstart/)     |    +    |  +   |         +         |
+|             [Amazon API Gateway](https://aws.amazon.com/api-gateway/)              |    +    |  +   |         +         |
+| [Azure API Management](https://azure.microsoft.com/en-us/products/api-management/) |    +    |  +   |         +         |
+
 Если проект хостится у облачного провайдера, то лучше выбирать API Gateway этого провайдера или любой из опенсорсных с которым есть опыт работы и он имеет необходимый функционал.
 
 [10 Top Open Source API Gateways](https://www.tecmint.com/open-source-api-gateways-and-management-tools/)
@@ -43,7 +44,7 @@
 
 Обоснуйте свой выбор.
 
-Самые популярные на мой взгляд брокеры сообщений в таблице ниже, я бы выбирал основываясь на том с какими продуктами есть опыи работы и предварительно можно потестировать каждый продукт и выбрать наиболее подходяший для конкретного проекта.
+Самые популярные на мой взгляд брокеры сообщений в таблице ниже, я бы выбирал основываясь на том с какими продуктами есть опыт работы и предварительно можно потестировать каждый продукт и выбрать наиболее подходяший для конкретного проекта.
 
 | Наименование  |  Cluster |   Persistance    |  Speed | Multiformat | ACLs | Adm. overhead |
 |:---:|:---:|:---:|:---:|:---:|:----:|:---:|
