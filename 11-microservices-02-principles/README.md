@@ -27,6 +27,9 @@
 | [Azure API Management](https://azure.microsoft.com/en-us/products/api-management/) |    +    |  +   |         +         |
 
 Если проект хостится у облачного провайдера, то лучше выбирать API Gateway этого провайдера или любой из опенсорсных с которым есть опыт работы и он имеет необходимый функционал.
+Если выбирать из решений open source, то я бы выбрал kong
+
+[сравнение](https://www.moesif.com/blog/technical/api-gateways/How-to-Choose-The-Right-API-Gateway-For-Your-Platform-Comparison-Of-Kong-Tyk-Apigee-And-Alternatives/)
 
 [10 Top Open Source API Gateways](https://www.tecmint.com/open-source-api-gateways-and-management-tools/)
 
@@ -52,7 +55,9 @@
 | [rabbitmq](https://github.com/rabbitmq/rabbitmq-server) | + | + | average | STOMP, AMQP, MQTT | + | + |
 | [Apache ActiveMQ](https://github.com/apache/activemq) | + | + | average | OpenWire, STOMP, AMQP, MQTT, JMS | + | + |
 
+Исходя из условий задания я бы выбрал rabbitmq если сообщений до 10000 и Kafka если больше.
 
+[сравнение](https://habr.com/ru/company/southbridge/blog/666326/)
 ## Задача 3: API Gateway * (необязательная)
 
 ### Есть три сервиса:
