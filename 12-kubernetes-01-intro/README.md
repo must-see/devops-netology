@@ -175,7 +175,8 @@ service/metrics-server   ClusterIP   10.103.102.15   <none>        443/TCP      
 - подключиться к minikube 
 - проверить работу приложения из задания 2, запустив port-forward до кластера
 
-- ./kubectl запускал с Win
+
+./kubectl запускал с Win
 
 ```commandline
 PS C:\Users\must-\Desktop\HW> ./kubectl get services
