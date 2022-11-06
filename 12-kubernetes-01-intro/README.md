@@ -176,7 +176,7 @@ service/metrics-server   ClusterIP   10.103.102.15   <none>        443/TCP      
 - проверить работу приложения из задания 2, запустив port-forward до кластера
 
 - ./kubectl запускал с Win
-- 
+
 ```commandline
 PS C:\Users\must-\Desktop\HW> ./kubectl get services
 NAME         TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
