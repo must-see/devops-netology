@@ -1,0 +1,85 @@
+
+# Config Postgres Pod
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+spec:
+  serviceName: postgres
+  selector:
+    matchLabels:
+      app: ecom
+      tier: postgres
+  template:
+    metadata:
+      labels:
+        app: ecom
+        tier: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        envFrom:
+          - configMapRef:
+              name: postgres-config
+        ports:
+        - containerPort: 5432
+          name: postgredb
+        volumeMounts:
+        - name: postgredb
+          mountPath: /var/lib/postgresql
+          subPath: postgres
+  volumeClaimTemplates:
+  - metadata:
+      name: postgredb
+    spec:
+      accessModes: ["ReadWriteMany"]
+      resources:
+        requests:
+          storage: 5Gi
+# Config Service
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  labels:
+    app: ecom
+    tier: postgres
+data:
+  POSTGRES_DB: prod
+  POSTGRES_USER: PGuser
+  POSTGRES_PASSWORD: P@ssword
+  PGDATA: /var/lib/postgresql/data/pgdata
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  labels:
+    app: ecom
+    tier: postgres
+spec:
+  type: NodePort
+  ports:
+   - port: 5432
+  selector:
+    app: ecom
+    tier: postgres
+# Config PersistentVolume
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv-prod
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.88.189
+    path: /var/nfs

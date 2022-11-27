@@ -1,0 +1,56 @@
+# Config Back
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ecom
+    tier: back
+  name: prod-b
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ecom
+      tier: back
+  template:
+    metadata:
+      labels:
+        app: ecom
+        tier: back
+    spec:
+      containers:
+      - env:
+        - name: DATABASE_HOST
+          value: postgres
+        - name: DATABASE_NAME
+          value: prod
+        - name: DATABASE_PASSWORD
+          value: P@ssword
+        - name: DATABASE_USER
+          value: PGuser
+        - name: DATABASE_PORT
+          value: "5432"
+        image: "gcr.io/google-samples/hello-go-gke:1.0"
+        imagePullPolicy: "IfNotPresent"
+        name: prod-b
+        ports:
+        - containerPort: 80
+      restartPolicy: Always
+# Config Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: ecom
+    tier: back
+  name: prod-b
+spec:
+  type: NodePort
+  ports:
+  - name: "80"
+    port: 80
+    targetPort: 80
+  selector:
+    app: ecom
+    tier: back

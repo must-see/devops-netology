@@ -1,0 +1,66 @@
+# Config PostgreSQL StatefulSet
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres-db
+spec:
+  serviceName: postgres-db-svc
+  selector:
+    matchLabels:
+      app: postgres-db
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgres-db
+    spec:
+      containers:
+        - name: postgres-sdb
+          image: postgres:latest
+          volumeMounts:
+            - name: postgres-db-disk
+              mountPath: /data
+          env:
+            - name: POSTGRES_PASSWORD
+              value: P@ssword
+            - name: PGDATA
+              value: /data/pgdata
+  # Config Volume Claim
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-db-disk
+      spec:
+        accessModes: ["ReadWriteMany"]
+        resources:
+          requests:
+            storage: 1Gi
+---
+# Config PostgreSQL StatefulSet Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-db-lb
+spec:
+  selector:
+    app: postgres-db
+  type: LoadBalancer
+  ports:
+    - port: 5432
+      targetPort: 5432
+# Config PersistentVolume (pv)
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+  labels:
+    type: local
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    server: 192.168.88.189
+    path: /var/nfs

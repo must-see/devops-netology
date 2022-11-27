@@ -1,0 +1,40 @@
+# Config Stage Pod
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fb-pod
+  labels:
+    app: fb-app
+spec:
+  selector:
+    matchLabels:
+      app: fb-app
+  template:
+    metadata:
+      labels:
+        app: fb-app
+    spec:
+    # Config Containers
+      containers:
+      - name: front
+        image: nginx:1.23.2
+        ports:
+        - containerPort: 80
+      - name: back
+        image: debian
+        command: ["sleep", "3600"]
+---
+# Config Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: fb-svc
+  labels:
+    app: fb
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    nodePort: 30080
+  selector:
+    app: fb

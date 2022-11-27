@@ -1,0 +1,42 @@
+# Config Front
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prod-f
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ecom
+      tier: front
+  template:
+    metadata:
+      labels:
+        app: ecom
+        tier: front
+    spec:
+      containers:
+      - name: client
+        image: "gcr.io/google-samples/hello-go-gke:1.0"
+        imagePullPolicy: "IfNotPresent"
+        ports:
+        - name: http
+          containerPort: 80
+        env:
+        - name: PRODUCT_BACK_SERVER_URL
+          value: product-b
+# Config Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+    name: produ-f
+spec:
+    type: NodePort
+    ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+    selector:
+        app: ecom
+        tier: front
