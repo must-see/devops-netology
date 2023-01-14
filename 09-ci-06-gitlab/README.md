@@ -98,4 +98,55 @@
 
 Автомазируйте работу тестировщика, пусть у вас будет отдельный конвейер, который автоматически поднимает контейнер и выполняет проверку, например, при помощи curl. На основе вывода - будет приниматься решение об успешности прохождения тестирования
 
+```yaml
+stages:
+  - build
+  - deploy
+  - acceptance
 
+build:
+  stage: build
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: tcp://localhost:2375/
+  image: cr.yandex/yc/metadata-token-docker-helper:0.2
+  services:
+    - docker:19.03.1-dind
+  script:
+    - docker build . -t cr.yandex/crpsrpkgfch7dn0b6937/hello:gitlab-$CI_COMMIT_SHORT_SHA
+  except:
+    - main  
+
+deploy:
+  stage: deploy
+  variables:
+    DOCKER_DRIVER: overlay2
+    DOCKER_TLS_CERTDIR: ""
+    DOCKER_HOST: tcp://localhost:2375/
+  image: cr.yandex/yc/metadata-token-docker-helper:0.2
+  services:
+    - docker:19.03.1-dind
+  script:
+    - docker build . -t cr.yandex/crpsrpkgfch7dn0b6937/hello:gitlab-$CI_COMMIT_SHORT_SHA
+    - docker push cr.yandex/crpsrpkgfch7dn0b6937/hello:gitlab-$CI_COMMIT_SHORT_SHA
+  only:
+    - main
+
+curl test:
+  stage: acceptance
+  image: curlimages/curl 
+  services:
+    - name: cr.yandex/crpsrpkgfch7dn0b6937/hello:gitlab-$CI_COMMIT_SHORT_SHA
+      alias: dockertest
+  script:
+    - curl http://dockertest:5290/get_info | grep "Running"
+  only:
+    - main    
+```
+
+![](./img/updPipline.JPG)
+
+![](./img/curlOK.JPG)
+
++ !!! Необходимо прописать "Доступ для IP-адресов" в настройках Container Regestry Yandex'a
