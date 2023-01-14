@@ -150,3 +150,4 @@ curl test:
 ![](./img/curlOK.JPG)
 
 + !!! Необходимо прописать "Доступ для IP-адресов" в настройках Container Regestry Yandex'a
++ Т.к. образ качается, с Container Regestry, то он туда должен быть загружен через "docker push *", поэтому only main, тк в деплое образ не загружается в реестр
