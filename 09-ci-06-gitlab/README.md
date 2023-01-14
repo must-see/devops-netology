@@ -3,18 +3,26 @@
 ## Подготовка к выполнению
 
 1. Необходимо [подготовить gitlab к работе по инструкции](https://cloud.yandex.ru/docs/tutorials/infrastructure-management/gitlab-containers)
+
 - Кластер k8s
+
 ![](./img/k8s.JPG)
 - Реестр
- ![](./img/registry.JPG)
+
+![](./img/registry.JPG)
 - VM с GitLab
- ![](./img/VM-gitlab.JPG)
+
+![](./img/VM-gitlab.JPG)
 
 - Установить через инстанс GitLab не получилось падает в ошибку
- ![](./img/instance_err.JPG)
+
+![](./img/instance_err.JPG)
+
 2. Создайте свой новый проект
 3. Создайте новый репозиторий в gitlab, наполните его [файлами](./repository)
- ![](./img/repository.JPG)
+
+![](./img/repository.JPG)
+
 4. Проект должен быть публичным, остальные настройки по желанию
 
 ## Основная часть
@@ -33,6 +41,7 @@
 - Сборка прошла успешно
 
 ![](./img/firstBuild.JPG)
+
 - Собранный образ в реестре
 
 ![](./img/image01.JPG)
@@ -63,11 +72,16 @@
 1. Поднять докер-контейнер с образом `python-api:latest` и проверить возврат метода на корректность
 2. Закрыть Issue с комментарием об успешности прохождения, указав желаемый результат и фактически достигнутый
 - Загрузка образа из реестра Яндекса
+
 ![](./img/imagePull.JPG)
+
 - Запуск образа
+
 ![](./img/dockerRun.JPG)
+
 ![](./img/getInfo.JPG)
 - Закрытие задачи тестировщика
+
 ![](./img/closeIssue.JPG)
 
 ## Итог
